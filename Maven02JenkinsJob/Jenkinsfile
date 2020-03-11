@@ -1,0 +1,26 @@
+pipeline {
+    agent any
+    stages {
+        stage ('Compile Stage') {
+            steps {
+                withMaven(maven : 'myMaven') {
+                    bat 'mvn -f 02JenkinsJob/pom.xml clean compile'
+                   }
+            }
+        }
+        stage ('Testing Stage') {
+            steps {
+                withMaven(maven : 'myMaven') {
+                    bat 'mvn -f 02JenkinsJob/pom.xml test'
+                }
+            }
+        }
+        stage ('Deployment Stage') {
+            steps {
+                withMaven(maven : 'myMaven') {
+                    bat 'mvn -f 02JenkinsJob/pom.xml deploy'
+                }
+            }
+        }
+    }
+}
