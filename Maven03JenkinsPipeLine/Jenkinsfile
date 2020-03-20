@@ -4,21 +4,21 @@ pipeline {
         stage ('Compile Stage') {
             steps {
                 withMaven(maven : 'myMaven') {
-                    bat 'mvn -f 02JenkinsJob/Maven03JenkinsPipeLine/pom.xml clean compile'
+                    bat 'mvn -f Maven03JenkinsPipeLine/pom.xml clean compile'
                    }
             }
         }
         stage ('Testing Stage') {
             steps {
                 withMaven(maven : 'myMaven') {
-                    bat 'mvn -f 02JenkinsJob/Maven03JenkinsPipeLine/pom.xml test'
+                    bat 'mvn -f Maven03JenkinsPipeLine/pom.xml test'
                 }
             }
         }
         stage ('Deployment Stage') {
             steps {
                 withMaven(maven : 'myMaven') {
-                    bat 'mvn -f 02JenkinsJob/Maven03JenkinsPipeLine/pom.xml deploy'
+                    bat 'mvn -f Maven03JenkinsPipeLine/pom.xml deploy'
                 }
             }
         }
